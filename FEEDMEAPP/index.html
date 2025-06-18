@@ -13,22 +13,142 @@
         <h1>FEED ME</h1>
      <nav class="main-nav">
         <button id="showHome" class="nav-button-active" aria-controls="home-Section">Home</button>
-
+        <button id="showFavourites" class="nav-button" aria-controls="favouritsSection">My Favourites</button>
+        <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle dark mode">Toggle dark mpde</button>
      </nav>
      </div>
-        
     </header>
+    <!-- Main section of app -->
+    <main class="app-main">
+        <section id="homeSection" class="app-section-container">
+        <div class="search-action">
+            <h2>
+                Find Your Next Meal
+            </h2>
+            <!-- Search field for searching for recipes and filitering search results -->
+            <div class="search-controls">
+                <label for="searchInput" class="sr-only"> Search For Recipies</label>
+                <input type="text" id="searchInput" placeholder="Search For Ingredients or Recipes e.g 'chickpea curry'">
+                <button id="searchButton" aria-label="Search For Recipes"> Search</button>
+            </div>
+            <!-- Filters -->
+            <div id="searchResultsSuggestions" class="search-suggestions-hidden" role="listbox" aria-label="search-suggestions"></div>
+   <div class="filter-controls">
+                    <label for="cuisineFilter" class="sr-only">Cuisine Type</label>
+                    <select id="cuisineFilter" aria-label="Filter by cuisine type">
+                        <option value="">All Cuisines</option>
+                        <option value="American">American</option>
+                        <option value="Asian">Asian</option>
+                        <option value="British">British</option>
+                        <option value="Caribbean">Caribbean</option>
+                        <option value="Central Europe">Central Europe</option>
+                        <option value="Chinese">Chinese</option>
+                        <option value="Eastern Europe">Eastern Europe</option>
+                        <option value="French">French</option>
+                        <option value="Indian">Indian</option>
+                        <option value="Italian">Italian</option>
+                        <option value="Japanese">Japanese</option>
+                        <option value="Mediterranean">Mediterranean</option>
+                        <option value="Mexican">Mexican</option>
+                        <option value="Middle Eastern">Middle Eastern</option>
+                        <option value="Nordic">Nordic</option>
+                        <option value="South American">South American</option>
+                        <option value="South East Asian">South East Asian</option>
+                        <option value="Kosher">Kosher</option>
+                    </select>
+
+                    <label for="dietFilter" class="sr-only">Diet Type</label>
+                    <select id="dietFilter" aria-label="Filter by diet type">
+                        <option value="">Any Diet</option>
+                        <option value="balanced">Balanced</option>
+                        <option value="high-fiber">High-Fiber</option>
+                        <option value="high-protein">High-Protein</option>
+                        <option value="low-carb">Low-Carb</option>
+                        <option value="low-fat">Low-Fat</option>
+                        <option value="low-sodium">Low-Sodium</option>
+                    </select>
+                      <label for="healthFilter" class="sr-only">Health Labels</label>
+                    <select id="healthFilter" aria-label="Filter by health labels">
+                        <option value="">Any Health Label</option>
+                        <option value="alcohol-free">Alcohol-Free</option>
+                        <option value="DASH">DASH</option>
+                        <option value="gluten-free">Gluten-Free</option>
+                        <option value="keto-friendly">Keto-Friendly</option>
+                        <option value="kidney-friendly">Kidney-Friendly</option>
+                        <option value="kosher">Kosher</option>
+                        <option value="low-sugar">Low-Sugar</option>
+                        <option value="paleo">Paleo</option>
+                        <option value="peanut-free">Peanut-Free</option>
+                        <option value="pescatarian">Pescatarian</option>
+                        <option value="pork-free">Pork-Free</option>
+                        <option value="red-meat-free">Red-Meat-Free</option>
+                        <option value="sugar-conscious">Sugar-Conscious</option>
+                        <option value="tree-nut-free">Tree-Nut-Free</option>
+                        <option value="vegan">Vegan</option>
+                        <option value="vegetarian">Vegetarian</option>
+                        <option value="wheat-free">Wheat-Free</option>
+                    </select>
+                </div>
+        </div>
+        <div id="loadingIndictior" class="loading-indicator-hidden" aria-live="polite"> Loading Recipes......</div>
+        <div id="recipeCardsContainer" class="recipe-cards-container">
+            <p class="initial-message" > Start by searcing for your favourite recipes!</p>
+        </div>
+    </section>
+    <section id="favouritesSection" class="app-section-container-hidden">
+        <h2> My Favourite Recipes</h2>
+        <div id="favouriteRecipiesContainer" class="recipie-cards-container">
+            <p class="initial-message">You haven't favorited any recipes yet! Go back to search and click the heart icon to save</p>
+
+    </div>
+    </section>
+     </main>
+    
     <div>
-        <h2>
-        Find your favourite recipies below
-        </h2>
-        <form action="">
-        <input type="text" id="search" placeholder="Enter Ingredients">
-        <button type="" id="submit" class="button">Search</button>
         
     </form>
     <div id="results"></div>
+    </div><div id="recipeModal" class="recipe-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalRecipeTitle">
+        <div class="recipe-modal-content">
+            <button class="close-modal-btn" aria-label="Close recipe details">&times;</button>
+            <img id="modalRecipeImage" src="" alt="Recipe image">
+            <h2 id="modalRecipeTitle"></h2>
+
+            <h3>Ingredients</h3>
+            <ul id="modalIngredientsList">
+                </ul>
+
+            <h3>Nutrition Information (per serving)</h3>
+            <div class="nutrition-grid">
+                <div><strong>Calories:</strong> <span id="modalCalories"></span> kcal</div>
+                <div><strong>Protein:</strong> <span id="modalProtein"></span></div>
+                <div><strong>Fat:</strong> <span id="modalFat"></span></div>
+                <div><strong>Carbs:</strong> <span id="modalCarbs"></span></div>
+                <div><strong>Fiber:</strong> <span id="modalFiber"></span></div>
+                <div><strong>Sugar:</strong> <span id="modalSugar"></span></div>
+                <div><strong>Saturated Fat:</strong> <span id="modalSatFat"></span></div>
+                <div><strong>Cholesterol:</strong> <span id="modalCholesterol"></span></div>
+                <div><strong>Sodium:</strong> <span id="modalSodium"></span></div>
+                <div><strong>Vitamin C:</strong> <span id="modalVitC"></span></div>
+                <div><strong>Calcium:</strong> <span id="modalCalcium"></span></div>
+                <div><strong>Iron:</strong> <span id="modalIron"></span></div>
+                <div><strong>Potassium:</strong> <span id="modalPotassium"></span></div>
+            </div>
+
+            <p class="source-link">
+                View full recipe instructions on <a id="modalSourceLink" href="#" target="_blank" rel="noopener noreferrer">Original Source</a>
+            </p>
+        </div>
     </div>
+
+    <div id="notification" class="notification" aria-live="polite"></div>
+ <footer class="app-footer">
+        <div class="container">
+            <p>&copy; 2025 FeedMe. All rights reserved.</p>
+            <p> Coded by Pia Devaniya Manickum</p>
+        </div>
+    </footer>
+
     <script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,143 @@
+body{
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    color: black;
+    transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out; /* Slower, smoother transition */
+    line-height: 1.6;
+    scroll-behavior: smooth; /* Smooth scrolling for potential anchor links */
+}
+/* Dark mode Style */
+body.dark-mode {
+    background-color: var(black);
+    color: var(white);
+}
+
+body.dark-mode .app-header {
+    background-color: var(black);
+    box-shadow: 0 3px 8px var(white); 
+}
+
+body.dark-mode .main-nav button {
+    color: var(black);
+    background-color: var(black);
+    border-color: var(black); /* Dark mode button border */
+}
+body.dark-mode .main-nav button.active {
+    background-color: var(purple);
+    border-color: var(pu);
+}
+body.dark-mode .main-nav button:hover:not(.active) {
+    background-color: var(--dark-secondary-color);
+}
+
+body.dark-mode .search-section input,
+body.dark-mode .search-section select {
+    background-color: var(--dark-card-background);
+    color: var(--dark-text-color);
+    border-color: var(--dark-border-color);
+}
+body.dark-mode .search-section input::placeholder {
+    color: rgba(224, 224, 224, 0.7); /* Lighter placeholder in dark mode */
+}
+body.dark-mode .search-section input:focus,
+body.dark-mode .filter-controls select:focus {
+    border-color: var(--dark-accent-color);
+    box-shadow: 0 0 0 2px rgba(206, 147, 216, 0.5); /* Focus ring for dark mode */
+}
+
+body.dark-mode .search-section button {
+    background-color: var(--dark-secondary-color);
+    color: var(--dark-text-color);
+    box-shadow: 0 2px 5px var(--dark-shadow-color-light);
+}
+body.dark-mode .search-section button:hover {
+    background-color: var(--dark-primary-color);
+}
+
+body.dark-mode .recipe-card {
+    background-color: var(--dark-card-background);
+    border: 1px solid var(--dark-border-color);
+    box-shadow: 0 6px 12px var(--dark-shadow-color-light); /* Consistent shadow */
+}
+
+body.dark-mode .recipe-card h3 {
+    color: var(--dark-accent-color);
+}
+
+body.dark-mode .recipe-card p {
+    color: #b0b0b0; /* Slightly lighter text for readability on dark cards */
+}
+
+body.dark-mode .view-recipe-btn {
+    background-color: var(--dark-secondary-color);
+    color: var(--dark-text-color);
+}
+body.dark-mode .view-recipe-btn:hover {
+    background-color: var(--dark-primary-color);
+}
+
+body.dark-mode .favorite-btn {
+    color: var(--dark-border-color);
+}
+body.dark-mode .favorite-btn.favorited {
+    color: #FF80AB; /* Brighter pink for dark mode contrast */
+}
+
+body.dark-mode .app-footer {
+    background-color: var(--dark-primary-color);
+    color: var(--dark-text-color);
+}
+
+body.dark-mode .recipe-modal-content {
+    background-color: var(--dark-card-background);
+    color: var(--dark-text-color);
+    border: 1px solid var(--dark-border-color);
+    box-shadow: 0 8px 20px var(--dark-shadow-color-medium); /* Deeper shadow for modal */
+}
+
+body.dark-mode .recipe-modal-content h2,
+body.dark-mode .recipe-modal-content h3 {
+    color: var(--dark-accent-color);
+}
+
+body.dark-mode .recipe-modal-content .close-modal-btn {
+    color: var(--dark-text-color);
+}
+body.dark-mode .recipe-modal-content .close-modal-btn:hover {
+    color: var(--dark-accent-color);
+}
+
+body.dark-mode .recipe-modal-content .source-link a {
+    color: var(--dark-secondary-color);
+}
+body.dark-mode .recipe-modal-content .source-link a:hover {
+    color: var(--dark-accent-color);
+}
+
+body.dark-mode .loading-indicator,
+body.dark-mode .initial-message {
+    color: var(--dark-text-color);
+}
+
+body.dark-mode .nutrition-grid div {
+    background-color: var(--dark-background-color);
+    border-color: var(--dark-border-color);
+    color: var(--dark-text-color);
+}
+
+body.dark-mode .search-suggestions {
+    background-color: var(--dark-card-background);
+    border: 1px solid var(--dark-border-color);
+    box-shadow: 0 5px 10px var(--dark-shadow-color-light);
+}
+body.dark-mode .search-suggestions .suggestion-item {
+    color: var(--dark-text-color);
+    border-bottom-color: var(--dark-border-color);
+}
+body.dark-mode .search-suggestions .suggestion-item:hover,
+body.dark-mode .search-suggestions .suggestion-item.focused {
+    background-color: var(--dark-secondary-color);
+    color: var(--dark-text-color);
+}
