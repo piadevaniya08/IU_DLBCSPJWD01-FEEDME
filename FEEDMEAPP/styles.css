@@ -1,8 +1,44 @@
+:root{
+    /* Purple Theme - Slightly adjusted for richer tones */
+    --primary-color: #5D0A91; /* Deeper Purple */
+    --secondary-color: #7B1FA2; /* Rich Medium Purple */
+    --accent-color: #BA68C8; /* Lighter, more vibrant plum */
+    --light-accent-color: #E1BEE7; /* Very light lilac for subtle backgrounds */
+    --text-color: #2e2e2e; /* Softer black */
+    --background-color: #f8f8f8; /* Off-white background */
+    --card-background: #ffffff; /* Pure white for cards */
+    --border-color: #e0e0e0; /* Lighter, subtle border */
+    --shadow-color-light: rgba(0, 0, 0, 0.08); /* Lighter shadow for elevation */
+    --shadow-color-medium: rgba(0, 0, 0, 0.15); /* Medium shadow for interactive elements */
+
+    /* Dark Mode Colors - Adjusted to complement light theme */
+    --dark-primary-color: #3F006D; /* Even deeper purple */
+    --dark-secondary-color: #5E1A82; /* Darker medium purple */
+    --dark-accent-color: #CE93D8; /* Brighter accent for contrast */
+    --dark-text-color: #e0e0e0; /* Soft white for dark mode text */
+    --dark-background-color: #1e1e1e; /* Dark grey background */
+    --dark-card-background: #2a2a2a; /* Slightly lighter dark grey for cards */
+    --dark-border-color: #3a3a3a;
+    --dark-shadow-color-light: rgba(0, 0, 0, 0.25);
+    --dark-shadow-color-medium: rgba(0, 0, 0, 0.4);
+
+    /* Notification Colors */
+    --success-color: #4CAF50;
+    --error-color: #ef5350; /* Softer red */
+    --info-color: #2196F3;
+
+    /* Font Weights */
+    --font-regular: 400;
+    --font-semibold: 600;
+    --font-bold: 700;
+
+
+}
 body{
     font-family: sans-serif;
     margin: 0;
     padding: 0;
-    background-color: white;
+    background-color: #e1bee7;
     color: black;
     transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out; /* Slower, smoother transition */
     line-height: 1.6;
