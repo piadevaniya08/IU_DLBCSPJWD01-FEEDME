@@ -44,7 +44,10 @@ const modalSourceLink = document.querySelector('modalSourceLink');
 //Noftication Elements //
 const notificationElement = document.querySelector('notifcation')
 
+//Global Variables//
 let currentFocusedSuggestion = -1; // For keyboard navigation in suggestions
+
+
 
 //Dark Mode Functionality //
 darkModeToggle.addEventListener('click', () => {
@@ -55,6 +58,9 @@ darkModeToggle.addEventListener('click', () => {
         localStorage.setItem('theme', 'light');
     }
 });
+
+// Check for saved theme on preference load//
+
 
 
 searchForm.addEventListener('submit', (e) => {
