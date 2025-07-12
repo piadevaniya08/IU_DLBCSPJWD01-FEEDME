@@ -1,13 +1,10 @@
+// API credentials
 const API_ID = '03521114';
 const API_KEY = '25c5af13a81dc3dbf6ba5241d0902209';
 const BASE_URL = `https://api.edamam.com/api/recipes/v2?type=public&app_id=${API_ID}&app_key=${API_KEY}`;
 
-// --- NEW: Edamam Account User ID ---
-// This is required by Edamam for some app setups for tracking.
-// Choose a unique, non-personally identifiable string for your USER_ID.
-// Example: 'my-recipe-app-dev-user-001', 'your-website-front-end-client'
-const USER_ID = 'feed-me-web-app'; // <--- IMPORTANT: REPLACE WITH YOUR OWN UNIQUE ID!
-// -----------------------------------
+// Edamam Account User ID 
+const USER_ID = 'feed-me-web-app'; 
 
 // DOM Elements
 const searchForm = document.querySelector('#searchForm');
@@ -86,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
     showSection(homeSection);
 });
 
-// --- API Interaction ---
+//API Interaction 
 async function fetchRecipes() {
     const query = searchInput.value.trim();
     if (!query) {
@@ -153,7 +150,7 @@ async function fetchRecipes() {
     }
 }
 
-// --- Search Functionality ---
+//Search Functionality
 searchForm.addEventListener('submit', (e) => {
     e.preventDefault();
     fetchRecipes();
@@ -163,7 +160,7 @@ cuisineFilter.addEventListener('change', fetchRecipes);
 dietFilter.addEventListener('change', fetchRecipes);
 healthFilter.addEventListener('change', fetchRecipes);
 
-// --- Display Recipes ---
+//Display Recipes 
 function displayRecipes(hits) {
     recipeCardsContainer.innerHTML = '';
 
@@ -474,19 +471,19 @@ function openRecipeModal(recipe) {
         return `${quantity}${unit}${dailyValue}`;
     };
 
-    modalCalories.innerHTML = `<strong>Calories:</strong> ${toFixedOrZero(recipe.calories)} kcal`;
-    modalProtein.innerHTML = `<strong>Protein:</strong> ${getNutrient('PROCNT')}`;
-    modalFat.innerHTML = `<strong>Fat:</strong> ${getNutrient('FAT')}`;
-    modalCarbs.innerHTML = `<strong>Carbs:</strong> ${getNutrient('CHOCDF')}`;
-    modalFiber.innerHTML = `<strong>Fiber:</strong> ${getNutrient('FIBTG')}`;
-    modalSugar.innerHTML = `<strong>Sugar:</strong> ${getNutrient('SUGAR')}`;
-    modalSatFat.innerHTML = `<strong>Sat. Fat:</strong> ${getNutrient('FASAT')}`;
-    modalCholesterol.innerHTML = `<strong>Cholesterol:</strong> ${getNutrient('CHOLE')}`;
-    modalSodium.innerHTML = `<strong>Sodium:</strong> ${getNutrient('NA')}`;
-    modalVitC.innerHTML = `<strong>Vitamin C:</strong> ${getNutrient('VITC', true)}`;
-    modalCalcium.innerHTML = `<strong>Calcium:</strong> ${getNutrient('CA', true)}`;
-    modalIron.innerHTML = `<strong>Iron:</strong> ${getNutrient('FE', true)}`;
-    modalPotassium.innerHTML = `<strong>Potassium:</strong> ${getNutrient('K', true)}`;
+    modalCalories.innerHTML = toFixedOrZero(recipe.calories);
+    modalProtein.innerHTML = getNutrient('PROCNT');
+    modalFat.innerHTML = getNutrient('FAT');
+    modalCarbs.innerHTML = getNutrient('CHOCDF');
+    modalFiber.innerHTML = getNutrient('FIBTG');
+    modalSugar.innerHTML = getNutrient('SUGAR');
+    modalSatFat.innerHTML = getNutrient('FASAT');
+    modalCholesterol.innerHTML = getNutrient('CHOLE');
+    modalSodium.innerHTML = getNutrient('NA');
+    modalVitC.innerHTML = getNutrient('VITC', true);
+    modalCalcium.innerHTML = getNutrient('CA', true);
+    modalIron.innerHTML = getNutrient('FE', true);
+    modalPotassium.innerHTML = getNutrient('K', true);
 
     if (recipe.url && recipe.source) {
         modalSourceLink.href = recipe.url;

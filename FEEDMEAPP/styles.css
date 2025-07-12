@@ -1,5 +1,5 @@
 :root {
-    /* Purple Theme */
+    /* Purple Theme Palette Colours */
     --primary-color: #5D0A91;
     --secondary-color: #7B1FA2;
     --accent-color: #BA68C8;
@@ -11,7 +11,7 @@
     --shadow-color-light: rgba(0, 0, 0, 0.08);
     --shadow-color-medium: rgba(0, 0, 0, 0.15);
 
-    /* Dark Mode Colors */
+    /* Dark Mode Theme Palette Colours */
     --dark-primary-color: #3F006D;
     --dark-secondary-color: #5E1A82;
     --dark-accent-color: #CE93D8;
@@ -25,7 +25,7 @@
     /* Notification Colors */
     --success-color: #4CAF50;
     --error-color: #ef5350;
-    --info-color: #2196F3;
+    --info-color: #2196F3;     
 
     /* Font Weights */
     --font-regular: 400;
@@ -321,6 +321,8 @@ body.dark-mode .search-suggestions .suggestion-item.focused {
 
 .search-controls {
     display: flex;
+    align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 15px;
 }
@@ -356,9 +358,10 @@ body.dark-mode .search-suggestions .suggestion-item.focused {
     border-radius: 8px;
     cursor: pointer;
     font-size: 1.05rem;
-    font-weight: var(--font-semibold);
+    font-weight: var(--font-bold);
     transition: background-color 0.3s ease, transform 0.15s ease, box-shadow 0.2s ease;
     box-shadow: 0 4px 8px var(--shadow-color-medium);
+    text-transform: uppercase;
 }
 
 .search-section button:hover {
@@ -500,6 +503,7 @@ body.dark-mode .search-suggestions .suggestion-item.focused {
     height: 220px;
     object-fit: cover;
     display: flex;
+    margin: 0 auto 25px auto;  
     border-bottom: 1px solid var(--border-color);
 }
 
