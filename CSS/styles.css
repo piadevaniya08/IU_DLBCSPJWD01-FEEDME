@@ -72,6 +72,16 @@ body.dark-mode .main-nav button:hover:not(.active) {
     background-color: var(--dark-secondary-color);
     border-color: var(--dark-accent-color); /* Add a border color on hover */
 }
+body.dark-mode .search-section h3,
+body.dark-mode .search-section searchInput {
+    color: var(--text-color);
+}
+
+body.dark-mode .search-section cuisineFilter,
+body.dark-mode .search-section dietFilter,
+body.dark-mode .search-section healthFilter{
+     color: var(--text-color);
+}
 
 body.dark-mode .search-section input,
 body.dark-mode .search-section select {
