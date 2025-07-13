@@ -111,7 +111,7 @@ body.dark-mode .recipe-card h3 {
 }
 
 body.dark-mode .recipe-card p {
-    color: #b0b0b0; /* Slightly lighter text for readability on dark cards */
+    color: white; /* Slightly lighter text for readability on dark cards */
 }
 
 body.dark-mode .view-recipe-btn {
@@ -142,10 +142,11 @@ body.dark-mode .recipe-modal-overlay {
 
 body.dark-mode .recipe-modal-content {
     background-color: var(--dark-card-background);
-    color: var(--dark-text-color);
+    color: white;
     border: 1px solid var(--dark-border-color);
     box-shadow: 0 8px 20px var(--dark-shadow-color-medium); /* Deeper shadow for modal */
 }
+
 
 body.dark-mode .recipe-modal-content h2,
 body.dark-mode .recipe-modal-content h3 {
@@ -172,7 +173,10 @@ body.dark-mode .loading-indicator,
 body.dark-mode .initial-message {
     color: var(--dark-text-color);
 }
-
+body.dark-mode .recipe-modal-content ul#modalIngredientsList,
+body.dark-mode .recipe-modal-content ul#modalIngredientsList li {
+    color: white; /* Makes the ingredients list text pure white for better visibility */
+}
 body.dark-mode .nutrition-grid div {
     background-color: var(--dark-background-color);
     border-color: var(--dark-border-color);
