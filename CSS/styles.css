@@ -120,6 +120,8 @@ body.dark-mode .search-section select {
 }
 body.dark-mode .search-section input::placeholder {
     color: rgba(224, 224, 224, 0.7); 
+}
+
 body.dark-mode .recipe-card {
     background-color: var(--dark-card-background);
     border: 1px solid var(--dark-border-color);
