@@ -104,6 +104,10 @@ body.dark-mode .search-section h2 {
     color: var(--dark-accent-color); 
 }
 
+body.dark-mode .search-section label {
+    color: var(--dark-accent-color); 
+}
+
 body.dark-mode .filter-controls label { 
     color: var(--dark-accent-color); 
 }
@@ -118,9 +122,11 @@ body.dark-mode .search-section input,
 body.dark-mode .search-section select {
     color: var(--dark-text-color); 
 }
+
 body.dark-mode .search-section input::placeholder {
-    color: rgba(224, 224, 224, 0.7); 
+    color: rgba(224, 224, 224, 0.7); /* This targets the placeholder */
 }
+
 
 body.dark-mode .recipe-card {
     background-color: var(--dark-card-background);
