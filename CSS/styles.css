@@ -72,16 +72,6 @@ body.dark-mode .main-nav button:hover:not(.active) {
     background-color: var(--dark-secondary-color);
     border-color: var(--dark-accent-color); /* Add a border color on hover */
 }
-body.dark-mode .search-section h3,
-body.dark-mode .search-section searchInput {
-    color: var(--text-color);
-}
-
-body.dark-mode .search-section cuisineFilter,
-body.dark-mode .search-section dietFilter,
-body.dark-mode .search-section healthFilter{
-     color: var(--text-color);
-}
 
 body.dark-mode .search-section input,
 body.dark-mode .search-section select {
@@ -110,6 +100,26 @@ body.dark-mode .search-section button:hover {
     background-color: var(--dark-primary-color);
 }
 
+body.dark-mode .search-section h2 {
+    color: var(--dark-accent-color); 
+}
+
+body.dark-mode .filter-controls label { 
+    color: var(--dark-accent-color); 
+}
+
+
+body.dark-mode .filter-controls select {
+    color: var(--dark-text-color); 
+}
+
+
+body.dark-mode .search-section input,
+body.dark-mode .search-section select {
+    color: var(--dark-text-color); 
+}
+body.dark-mode .search-section input::placeholder {
+    color: rgba(224, 224, 224, 0.7); 
 body.dark-mode .recipe-card {
     background-color: var(--dark-card-background);
     border: 1px solid var(--dark-border-color);
