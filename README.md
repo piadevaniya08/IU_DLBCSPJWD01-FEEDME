@@ -19,10 +19,10 @@
 •	Deployment:  FeedMe is hosted Netlify.Once the development part is complete, the app will be published to Netlify and made available online.  Netlify makes the process easier by offering a user-friendly platform for hosting static webpages and online applications.
 
 
-## Installation
+## ⬇️Installation
 No installation is needed as the website is hosted on Netlify. Just simply click on the URL 👉 : https://iufeedme.netlify.app/
 
-## Test Cases
+## ✅Test Cases
 ✅Test case 1: User can search for an ingredient or dish
 
 •	Click on the search field and type an ingredient or dish. 
