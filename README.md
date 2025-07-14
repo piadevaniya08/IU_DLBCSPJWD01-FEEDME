@@ -24,39 +24,40 @@ No installation is needed as the website is hosted on Netlify. Just simply click
 
 ## ✅Test Cases
 ✅Test case 1: User can search for an ingredient or dish
+•Click on the search field and type an ingredient or dish. Test Data: search any ingredient/dish e.g. "chicken“, "pasta with pesto“, "gluten-free brownies“.
 
-•	Click on the search field and type an ingredient or dish. 
+ •Click the search button.
+ 
+•Expected outcome: Edamam API returns data from the keyword that was searched, and recipes/recipe cards  are shown.
 
-•	Click the search button.
-
-•	Expected outcome: Edamam API returns data from the keyword that was searched, and recipes/recipe cards  are shown.
-
- ✅Test case 2: User can filter recipes
-        
-•	After a keyword has been searched for,  click on the filter and choose an option.
-
-•	Expected outcome: Recipes will be filtered according to the users search and filters they chose.
+ ✅Test case 2: User can filter recipes      
+ 
+  •After a keyword has been searched for,  click on the filter and choose an option. Test Data: Search "salad", then select "Cuisine Type: Italian", "Diet Type: High-Fiber", "Health Labels: Vegetarian".
+  
+•Expected outcome: Recipes will be filtered according to the users search and filters they chose.
 
 ✅Test case 3 : User can view contents of recipe cards:
 
-•	Click on the view recipe button.
+•Click on the view recipe button. Test data: e.g., Click the view recipe button on "Zucchini and Almond Pasta Salad“.
 
-•	Expected outcome: Recipe content like the picture of the dish, the ingredients, nutritional value and link to the original recipe website should show up.
+•Expected outcome: Recipe content like the picture of the dish, the ingredients, nutritional value and link to the original recipe website should show up.
 
 ✅Test case 4 : User can toggle dark mode
 
-•	Click on the dark mode button
+•Click on the dark mode button
 
-•	Expected outcome: When website is currently in light mode and dark mode button is clicked, website turns to darker colours (dark mode). When website is currently in dark mode and dark mode button is clicked, website turns to lighter colours (light mode).
+•Expected outcome: When website is currently in light mode and dark mode button is clicked, website turns to darker colours (dark mode). When website is currently in dark mode and dark mode button is clicked, website turns to light colours (light mode).
 
 ✅Test case 5: User can favourite recipes
 
-•	Click on the white heart on the recipe card.
+•Click on the white heart on the recipe card. Test data: e.g.,  Click on white heart on “Zucchini and Almond Pasta Salad".
 
-•	Expected outcome: The heart turns red and a green message pops up at the bottom of the screen saying that the recipe has been added to my favourites.
+•Expected outcome: The heart turns red and a green message pops up at the bottom of the screen saying that the recipe has been added to my favourites.
 
 ✅Test case 6 : User can unfavourite recipes:
 
-•	Click on red heart at bottom of recipe card
+•Click on red heart at bottom of recipe card. Test data: e.g.,  Click on red heart on “Zucchini and Almond Pasta Salad".
 
-•	Expected outcome: The red heart turns white and a blue message pops up at the bottom of the screen saying that the recipe has been removed from favourites.
+•Expected outcome: The red heart turns white and a blue message pops up at the bottom of the screen saying that the recipe has been removed from favourites.
+
+
