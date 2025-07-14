@@ -20,19 +20,21 @@
 
 
 ## ⬇️Installation
-No installation is needed as the website is hosted on Netlify. Just simply click on the URL 👉 : https://iufeedme.netlify.app/
+No installation is needed as the website is hosted on Netlify. 
+Just simply click on the URL 👉 : https://iufeedme.netlify.app/
 
 ## ✅Test Cases
 ✅Test case 1: User can search for an ingredient or dish
+
 •Click on the search field and type an ingredient or dish. Test Data: search any ingredient/dish e.g. "chicken“, "pasta with pesto“, "gluten-free brownies“.
 
  •Click the search button.
  
-•Expected outcome: Edamam API returns data from the keyword that was searched, and recipes/recipe cards  are shown.
+•Expected outcome: Edamam API returns data from the keyword that was searched, and recipes/recipe cards are shown.
 
  ✅Test case 2: User can filter recipes      
  
-  •After a keyword has been searched for,  click on the filter and choose an option. Test Data: Search "salad", then select "Cuisine Type: Italian", "Diet Type: High-Fiber", "Health Labels: Vegetarian".
+  •After a keyword has been searched , click on the filter and choose an option. Test Data: Search "salad", then select "Cuisine Type: Italian", "Diet Type: High-Fiber", "Health Labels: Vegetarian".
   
 •Expected outcome: Recipes will be filtered according to the users search and filters they chose.
 
@@ -46,7 +48,7 @@ No installation is needed as the website is hosted on Netlify. Just simply click
 
 •Click on the dark mode button
 
-•Expected outcome: When website is currently in light mode and dark mode button is clicked, website turns to darker colours (dark mode). When website is currently in dark mode and dark mode button is clicked, website turns to light colours (light mode).
+•Expected outcome: When the website is currently in light mode and the dark mode button is clicked, the website turns to darker colours (dark mode). When the website is currently in dark mode and dark mode button is clicked, the website turns to light colours (light mode).
 
 ✅Test case 5: User can favourite recipes
 
@@ -59,5 +61,6 @@ No installation is needed as the website is hosted on Netlify. Just simply click
 •Click on red heart at bottom of recipe card. Test data: e.g.,  Click on red heart on “Zucchini and Almond Pasta Salad".
 
 •Expected outcome: The red heart turns white and a blue message pops up at the bottom of the screen saying that the recipe has been removed from favourites.
+
 
 
