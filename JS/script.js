@@ -54,12 +54,12 @@ const notificationElement = document.querySelector('#notification');
 let currentFocusedSuggestion = -1;
 let favoriteRecipes = [];
 
-// --- Utility Functions ---
+// Utility Functions
 function toFixedOrZero(num, fixed = 1) {
     return num ? num.toFixed(fixed) : '0';
 }
 
-// --- Dark Mode Functionality ---
+// Dark Mode Functionality 
 darkModeToggle.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
     if (document.body.classList.contains('dark-mode')) {
@@ -211,7 +211,7 @@ function displayRecipes(hits) {
     });
 }
 
-// --- UI Section Toggling ---
+// UI Section Toggling
 function showSection(sectionToShow) {
     homeSection.classList.add('hidden');
     favoritesSection.classList.add('hidden');
@@ -251,7 +251,7 @@ function hideLoading() {
     healthFilter.disabled = false;
 }
 
-// --- Notification Pop-up Functionality ---
+// Notification Pop-up Functionality 
 function showNotification(message, type = 'info', duration = 3000) {
     notificationElement.textContent = message;
     notificationElement.className = `notification show ${type}`;
@@ -263,7 +263,7 @@ function showNotification(message, type = 'info', duration = 3000) {
     }, duration);
 }
 
-// --- Search History/Suggestions ---
+// Search History/Suggestions 
 const MAX_SEARCH_HISTORY = 5;
 
 function saveSearchTerm(term) {
@@ -361,7 +361,7 @@ searchInput.addEventListener('keydown', (event) => {
     }
 });
 
-// --- Favorite Recipes Functionality ---
+//Favorite Recipes Functionality
 function loadFavoriteRecipes() {
     try {
         const storedFavorites = localStorage.getItem('favoriteRecipes');
@@ -452,7 +452,7 @@ function openRecipeModal(recipe) {
     modalRecipeImage.src = recipe.image || '';
     modalRecipeImage.alt = recipe.label || 'Recipe image';
 
-    // Ingredients check
+    // Ingredients check 
     if (recipe.ingredientLines && recipe.ingredientLines.length > 0) {
         modalIngredientsList.innerHTML = recipe.ingredientLines.map(ingredient => `<li>${ingredient}</li>`).join('');
     } else {

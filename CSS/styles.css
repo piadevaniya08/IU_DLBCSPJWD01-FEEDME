@@ -22,8 +22,8 @@
     --dark-shadow-color-light: rgba(0, 0, 0, 0.25);
     --dark-shadow-color-medium: rgba(0, 0, 0, 0.4);
 
-    /* Notification Colors */
-    --success-color: #4CAF50;
+    /* Notification Colors ( green = recipe is favourited, blue = recipe has been unfavourited, red= internet connection problem/recipes could not be fetched*/
+     --success-color: #4CAF50;  
     --error-color: #ef5350;
     --info-color: #2196F3;     
 
@@ -39,8 +39,8 @@ body {
     margin: 0;
     padding: 0;
     /* Default light mode colors */
-    background-color: var(--background-color); /* Use variable for consistency */
-    color: var(--text-color); /* Use variable for consistency */
+    background-color: var(--background-color); 
+    color: var(--text-color); 
     transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
     line-height: 1.6;
     scroll-behavior: smooth;
@@ -53,24 +53,24 @@ body.dark-mode {
 }
 
 body.dark-mode .app-header {
-    background-color: var(--dark-primary-color); /* More appropriate dark primary */
-    box-shadow: 0 3px 8px var(--dark-shadow-color-light); /* Dark mode shadow */
+    background-color: var(--dark-primary-color); 
+    box-shadow: 0 3px 8px var(--dark-shadow-color-light); 
 }
 
 body.dark-mode .main-nav button {
-    color: var(--dark-text-color); /* Buttons text color in dark mode */
-    background-color: transparent; /* Keep transparent unless active/hovered */
-    border-color: var(--dark-border-color); /* Dark mode button border */
+    color: var(--dark-text-color);
+    background-color: transparent; 
+    border-color: var(--dark-border-color); 
 }
 
 body.dark-mode .main-nav button.active {
-    background-color: var(--dark-secondary-color); /* Use a dark mode specific purple */
-    border-color: var(--dark-secondary-color); /* Use dark secondary for consistency */
+    background-color: var(--dark-secondary-color); 
+    border-color: var(--dark-secondary-color); 
 }
 
 body.dark-mode .main-nav button:hover:not(.active) {
     background-color: var(--dark-secondary-color);
-    border-color: var(--dark-accent-color); /* Add a border color on hover */
+    border-color: var(--dark-accent-color); 
 }
 
 body.dark-mode .search-section input,
@@ -81,18 +81,18 @@ body.dark-mode .search-section select {
 }
 
 body.dark-mode .search-section input::placeholder {
-    color: rgba(224, 224, 224, 0.7); /* Lighter placeholder in dark mode */
+    color: rgba(224, 224, 224, 0.7); 
 }
 
 body.dark-mode .search-section input:focus,
 body.dark-mode .filter-controls select:focus {
     border-color: var(--dark-accent-color);
-    box-shadow: 0 0 0 2px rgba(206, 147, 216, 0.5); /* Focus ring for dark mode */
+    box-shadow: 0 0 0 2px rgba(206, 147, 216, 0.5); 
 }
 
 body.dark-mode .search-section button {
     background-color: var(--dark-secondary-color);
-    color: var(--dark-text-color); /* Changed to dark text color for contrast */
+    color: var(--dark-text-color); 
     box-shadow: 0 2px 5px var(--dark-shadow-color-light);
 }
 
@@ -124,14 +124,14 @@ body.dark-mode .search-section select {
 }
 
 body.dark-mode .search-section input::placeholder {
-    color: rgba(224, 224, 224, 0.7); /* This targets the placeholder */
+    color: rgba(224, 224, 224, 0.7); 
 }
 
 
 body.dark-mode .recipe-card {
     background-color: var(--dark-card-background);
     border: 1px solid var(--dark-border-color);
-    box-shadow: 0 6px 12px var(--dark-shadow-color-light); /* Consistent shadow */
+    box-shadow: 0 6px 12px var(--dark-shadow-color-light); 
 }
 
 body.dark-mode .recipe-card h3 {
@@ -139,7 +139,7 @@ body.dark-mode .recipe-card h3 {
 }
 
 body.dark-mode .recipe-card p {
-    color: white; /* Slightly lighter text for readability on dark cards */
+    color: white; 
 }
 
 body.dark-mode .view-recipe-btn {
@@ -152,11 +152,11 @@ body.dark-mode .view-recipe-btn:hover {
 }
 
 body.dark-mode .favorite-btn {
-    color: var(--dark-border-color); /* More neutral default in dark mode */
+    color: var(--dark-border-color); 
 }
 
 body.dark-mode .favorite-btn.favorited {
-    color: #FF80AB; /* Brighter pink for dark mode contrast */
+    color: #FF80AB; 
 }
 
 body.dark-mode .app-footer {
@@ -165,14 +165,14 @@ body.dark-mode .app-footer {
 }
 
 body.dark-mode .recipe-modal-overlay {
-    background-color: rgba(0, 0, 0, 0.8); /* Slightly darker overlay for dark mode */
+    background-color: rgba(0, 0, 0, 0.8); 
 }
 
 body.dark-mode .recipe-modal-content {
     background-color: var(--dark-card-background);
     color: white;
     border: 1px solid var(--dark-border-color);
-    box-shadow: 0 8px 20px var(--dark-shadow-color-medium); /* Deeper shadow for modal */
+    box-shadow: 0 8px 20px var(--dark-shadow-color-medium); 
 }
 
 
@@ -203,7 +203,7 @@ body.dark-mode .initial-message {
 }
 body.dark-mode .recipe-modal-content ul#modalIngredientsList,
 body.dark-mode .recipe-modal-content ul#modalIngredientsList li {
-    color: white; /* Makes the ingredients list text pure white for better visibility */
+    color: white; 
 }
 body.dark-mode .nutrition-grid div {
     background-color: var(--dark-background-color);
@@ -229,11 +229,11 @@ body.dark-mode .search-suggestions .suggestion-item {
 body.dark-mode .search-suggestions .suggestion-item:hover,
 body.dark-mode .search-suggestions .suggestion-item.focused {
     background-color: var(--dark-secondary-color);
-    color: var(--dark-text-color); /* Ensure text remains readable */
+    color: var(--dark-text-color); 
 }
 
 
-/* --- Utility Classes --- */
+/*  Utility Classes  */
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -244,9 +244,9 @@ body.dark-mode .search-suggestions .suggestion-item.focused {
     display: none !important;
 }
 
-/* --- Header and navigation --- */
+/*  Header and navigation */
 .app-header {
-    background-color: var(--primary-color); /* Use CSS variable */
+    background-color: var(--primary-color); 
     color: white;
     padding: 15px 20px;
     box-shadow: 0 3px 8px var(--shadow-color-light);
@@ -261,7 +261,7 @@ body.dark-mode .search-suggestions .suggestion-item.focused {
 
 .app-header h1 {
     margin: 0;
-    font-size: 2.2rem; /* Consistent font size unit */
+    font-size: 2.2rem; 
     flex-shrink: 0;
 }
 
@@ -322,7 +322,7 @@ body.dark-mode .search-suggestions .suggestion-item.focused {
     transform: translateY(0);
 }
 
-/* --- Main Content Sections --- */
+/*  Main Content Sections  */
 .app-main {
     padding: 40px 0 60px;
 }
@@ -378,8 +378,8 @@ body.dark-mode .search-suggestions .suggestion-item.focused {
 }
 
 .search-section input::placeholder {
-    color: var(--text-color); /* Use text-color for a more consistent theme */
-    opacity: 0.7; /* Slightly lighten placeholder */
+    color: var(--text-color); 
+    opacity: 0.7; 
 }
 
 .search-section button {
@@ -408,7 +408,7 @@ body.dark-mode .search-suggestions .suggestion-item.focused {
 }
 
 .search-suggestions {
-    position: absolute; /* Added position absolute for proper positioning */
+    position: absolute; 
     top: calc(100% - 10px);
     left: 10px;
     right: 10px;
@@ -553,6 +553,7 @@ body.dark-mode .search-suggestions .suggestion-item.focused {
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
     -webkit-box-orient: vertical;
     margin-bottom: 12px;
     line-height: 1.3;
@@ -560,8 +561,8 @@ body.dark-mode .search-suggestions .suggestion-item.focused {
 
 .recipe-card p {
     font-size: 0.95rem;
-    color: var(--text-color); /* Use text-color variable */
-    opacity: 0.85; /* Slightly lighten for secondary text */
+    color: var(--text-color); 
+    opacity: 0.85; 
     margin-bottom: 8px;
 }
 
@@ -602,7 +603,7 @@ body.dark-mode .search-suggestions .suggestion-item.focused {
     border: none;
     cursor: pointer;
     font-size: 1.5rem;
-    color: var(--border-color); /* Use border-color for a more subtle default */
+    color: var(--border-color); 
     transition: color 0.2s ease, transform 0.1s ease;
     padding: 0;
     line-height: 1;
@@ -624,15 +625,15 @@ body.dark-mode .search-suggestions .suggestion-item.focused {
     text-align: center;
     grid-column: 1 / -1;
     font-size: 1rem;
-    color: var(--text-color); /* Use text-color variable */
-    opacity: 0.7; /* Slightly lighter */
+    color: var(--text-color); 
+    opacity: 0.7; 
     margin-top: 60px;
     font-style: italic;
 }
 
 /* Footer */
 .app-footer {
-    background-color: var(--primary-color); /* Use CSS variable */
+    background-color: var(--primary-color); 
     color: #fff;
     text-align: center;
     padding: 20px 0;
@@ -641,7 +642,7 @@ body.dark-mode .search-suggestions .suggestion-item.focused {
     box-shadow: 0 -2px 8px var(--shadow-color-light);
 }
 
-/* --- Recipe Modal Styles --- */
+/* Recipe Modal Styles  */
 .recipe-modal-overlay {
     position: fixed;
     top: 0;
@@ -797,7 +798,7 @@ body.dark-mode .search-suggestions .suggestion-item.focused {
     transform: rotate(0deg);
 }
 
-/* --- Notification Pop-up Styles --- */
+/*  Notification Pop-up Styles  */
 .notification {
     position: fixed;
     bottom: 30px;
