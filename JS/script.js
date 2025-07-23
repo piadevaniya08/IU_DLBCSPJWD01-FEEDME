@@ -2,11 +2,14 @@
 const API_ID = '03521114';
 const API_KEY = '25c5af13a81dc3dbf6ba5241d0902209';
 const BASE_URL = `https://api.edamam.com/api/recipes/v2?type=public&app_id=${API_ID}&app_key=${API_KEY}`;
+const NUTRITION_ANALYSIS_API_ID = "2c7b34da";
+const NUTRITION_ANALYSIS_API_KEY = "1d0ed84104e2c9d0da658492c12db598";
+const NUTRITION_ANALYSIS_URL = "https://api.edamam.com/api/nutrition-details";
 
 // Edamam Account User ID 
 const USER_ID = 'feed-me-web-app'; 
 
-// DOM Elements
+// Search DOM Elements
 const searchForm = document.querySelector('#searchForm');
 const searchInput = document.querySelector('#searchInput');
 const searchButton = document.querySelector('#searchButton');
@@ -18,14 +21,22 @@ const darkModeToggle = document.querySelector('#darkModeToggle');
 const loadingIndicator = document.querySelector('#loadingIndicator');
 const searchSuggestionsContainer = document.querySelector('#searchSuggestionsContainer');
 const initialMessage = document.querySelector('#initialMessage');
+// Nutrition Analysis Dom Elements
+const analyzeIngredientsInput = document.getElementById('analyze-ingredients-input');
+const analyzeButton = document.getElementById('analyze-button');
+const nutritionAnalysisResults = document.getElementById('nutrition-analysis-results');
+const nutritionAnalysisMessage = document.getElementById('nutrition-analysis-message');
+const nutritionAnalysisLoadingSpinner = document.getElementById('nutrition-loading-spinner'); 
+const clearNutritionButton = document.getElementById('clear-nutrition-button');
 
 // Navigation Elements
 const homeSection = document.querySelector('#homeSection');
 const favoritesSection = document.querySelector('#favoritesSection');
+const nutritionAnalyzerSection = document.querySelector('#nutritionAnalyzerSection'); 
 const showHomeBtn = document.querySelector('#showHomeBtn');
 const showFavoritesBtn = document.querySelector('#showFavoritesBtn');
+const showNutritionAnalyzerBtn = document.querySelector('#showNutritionAnalyzerBtn'); 
 const favoriteRecipesContainer = document.querySelector('#favoriteRecipesContainer');
-
 // Modal Elements
 const recipeModal = document.querySelector('#recipeModal');
 const closeModalBtn = document.querySelector('#closeModalBtn');
@@ -54,12 +65,22 @@ const notificationElement = document.querySelector('#notification');
 let currentFocusedSuggestion = -1;
 let favoriteRecipes = [];
 
-// Utility Functions
+//Utility Functions 
 function toFixedOrZero(num, fixed = 1) {
     return num ? num.toFixed(fixed) : '0';
 }
-
-// Dark Mode Functionality 
+/**
+ * Displays a general message within the nutrition analysis results area.
+ * Used for initial instructions or non-error feedback.
+ * @param {string} message - The message to display.
+ */
+function displayNutritionInitialMessage(message) {
+    if (nutritionAnalysisResults) {
+        nutritionAnalysisResults.innerHTML = `<p class="message">${message}</p>`;
+    }
+    if (nutritionAnalysisMessage) nutritionAnalysisMessage.style.display = 'block'; // Ensure message is visible
+}
+//Dark Mode Functionality 
 darkModeToggle.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
     if (document.body.classList.contains('dark-mode')) {
@@ -79,9 +100,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
     favoriteRecipes = loadFavoriteRecipes();
     displayFavoriteRecipes();
-
+ // Initialize navigation buttons <--- ADDED THESE LINES
+    showHomeBtn.addEventListener('click', () => showSection(homeSection));
+    showFavoritesBtn.addEventListener('click', () => showSection(favoritesSection));
+    showNutritionAnalyzerBtn.addEventListener('click', () => showSection(nutritionAnalyzerSection));
     showSection(homeSection);
 });
+// --- NUTRITION ANALYZER SPECIFIC INITIALIZATION AND EVENT LISTENERS ---
+    // This is where the nutrition analyzer's initial message and event listeners go
+    displayNutritionInitialMessage('Enter ingredients (e.g., "1 apple", "100g chicken breast", "1 cup rice") to analyze their nutritional content.');
+
+    if (analyzeButton) {
+        analyzeButton.addEventListener('click', handleNutritionAnalysis);
+    }
+
+    if (clearNutritionButton) { // Add listener for the clear button if you include it in HTML
+        clearNutritionButton.addEventListener('click', () => {
+            analyzeIngredientsInput.value = '';
+            displayNutritionInitialMessage('Enter ingredients (e.g., "1 apple", "100g chicken breast", "1 cup rice") to analyze their nutritional content.');
+        });
+    }
+
+    if (analyzeIngredientsInput) { 
+        analyzeIngredientsInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) { // Prevents new line on Enter, allows Shift+Enter for new line
+                e.preventDefault(); 
+                handleNutritionAnalysis();
+            }
+        });
+    }
 
 //API Interaction 
 async function fetchRecipes() {
@@ -149,18 +196,93 @@ async function fetchRecipes() {
         hideLoading();
     }
 }
+ 
+ // --- NUTRITION ANALYSIS API Call Function ---
+/**
+ * Analyzes the nutrition for a list of ingredients using Edamam Nutrition Analysis API.
+ * This uses a POST request.
+ * @param {string[]} ingredientLines - An array of ingredient strings (e.g., ["1 cup rice", "200g chicken breast"]).
+ * @returns {Promise<object>} - A promise that resolves to the API response data.
+ */
+async function analyzeRecipeNutrition(ingredientLines) {
+    if (!ingredientLines || ingredientLines.length === 0) {
+        // This validation is also done in the handler, but good to have here too
+        throw new Error("Ingredient list cannot be empty for nutrition analysis.");
+    }
 
-//Search Functionality
+    try {
+        const url = `${NUTRITION_ANALYSIS_URL}?app_id=${NUTRITION_ANALYSIS_API_ID}&app_key=${NUTRITION_ANALYSIS_API_KEY}`;
+
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json' // Crucial for POST requests with JSON body
+            },
+            body: JSON.stringify({
+                 ingr: ingredientLines
+            })
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text(); // Get more detailed error message from response
+            throw new Error(`HTTP error! Status: ${response.status}. Details: ${errorText}`);
+        }
+
+        return await response.json();
+
+    } catch (error) {
+        console.error("Error analyzing recipe nutrition:", error);
+        throw error; // Re-throw to be handled by the calling function
+    }
+}
+//Search Functionality Event Listener
 searchForm.addEventListener('submit', (e) => {
     e.preventDefault();
     fetchRecipes();
 });
-
+// Filter Event Listeners
 cuisineFilter.addEventListener('change', fetchRecipes);
 dietFilter.addEventListener('change', fetchRecipes);
 healthFilter.addEventListener('change', fetchRecipes);
 
-//Display Recipes 
+// --- NUTRITION ANALYSIS API Call Function ---
+/**
+ * Analyzes the nutrition for a list of ingredients using Edamam Nutrition Analysis API.
+ * This uses a POST request.
+ * @param {string[]} ingredientLines - An array of ingredient strings (e.g., ["1 cup rice", "200g chicken breast"]).
+ * @returns {Promise<object>} - A promise that resolves to the API response data.
+ */
+async function analyzeRecipeNutrition(ingredientLines) {
+    if (!ingredientLines || ingredientLines.length === 0) {
+        throw new Error("Ingredient list cannot be empty for nutrition analysis.");
+    }
+
+    try {
+        const url = `${NUTRITION_ANALYSIS_URL}?app_id=${NUTRITION_ANALYSIS_API_ID}&app_key=${NUTRITION_ANALYSIS_API_KEY}`;
+
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json' // Crucial for POST requests with JSON body
+            },
+            body: JSON.stringify({
+                 ingr: ingredientLines
+            })
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text(); // Get more detailed error message from response
+            throw new Error(`HTTP error! Status: ${response.status}. Details: ${errorText}`);
+        }
+
+        return await response.json();
+
+    } catch (error) {
+        console.error("Error analyzing recipe nutrition:", error);
+        throw error; // Re-throw to be handled by the calling function
+    }
+}
+//Display Functions
 function displayRecipes(hits) {
     recipeCardsContainer.innerHTML = '';
 
@@ -210,25 +332,110 @@ function displayRecipes(hits) {
         });
     });
 }
+// Nutrition Analysis Display Functions
+function displayNutritionAnalysisResults(data) {
+    const resultsDiv = document.getElementById('nutrition-analysis-results');
+    const messageP = document.getElementById('nutrition-analysis-message');
+    
+    // Clear previous results or messages
+    resultsDiv.innerHTML = ''; 
 
-// UI Section Toggling
+    // Check if we have the expected nutrition data
+    if (!data || !data.totalNutrients || Object.keys(data.totalNutrients).length === 0) {
+        resultsDiv.innerHTML = `<p class="message" id="nutrition-analysis-message">No detailed nutrition data available for these ingredients. Please check your input.</p>`;
+        return;
+    }
+
+    let nutritionHtml = `
+        <div class="nutrition-facts">
+            <h3>Nutrition Facts (per 100g, or per total ingredient input)</h3>
+            <p><strong>Calories:</strong> ${data.calories ? data.calories.toFixed(1) : 'N/A'} kcal</p>
+            <p><strong>Protein:</strong> ${data.totalNutrients.PROCNT ? data.totalNutrients.PROCNT.quantity.toFixed(1) : 'N/A'} ${data.totalNutrients.PROCNT ? data.totalNutrients.PROCNT.unit : ''}</p>
+            <p><strong>Fat:</strong> ${data.totalNutrients.FAT ? data.totalNutrients.FAT.quantity.toFixed(1) : 'N/A'} ${data.totalNutrients.FAT ? data.totalNutrients.FAT.unit : ''}</p>
+            <p><strong>Carbohydrates:</strong> ${data.totalNutrients.CHOCDF ? data.totalNutrients.CHOCDF.quantity.toFixed(1) : 'N/A'} ${data.totalNutrients.CHOCDF ? data.totalNutrients.CHOCDF.unit : ''}</p>
+            <p><strong>Fiber:</strong> ${data.totalNutrients.FIBTG ? data.totalNutrients.FIBTG.quantity.toFixed(1) : 'N/A'} ${data.totalNutrients.FIBTG ? data.totalNutrients.FIBTG.unit : ''}</p>
+            <p><strong>Sugar:</strong> ${data.totalNutrients.SUGAR ? data.totalNutrients.SUGAR.quantity.toFixed(1) : 'N/A'} ${data.totalNutrients.SUGAR ? data.totalNutrients.SUGAR.unit : ''}</p>
+            <p><strong>Saturated Fat:</strong> ${data.totalNutrients.FASAT ? data.totalNutrients.FASAT.quantity.toFixed(1) : 'N/A'} ${data.totalNutrients.FASAT ? data.totalNutrients.FASAT.unit : ''}</p>
+            <p><strong>Cholesterol:</strong> ${data.totalNutrients.CHOLE ? data.totalNutrients.CHOLE.quantity.toFixed(1) : 'N/A'} ${data.totalNutrients.CHOLE ? data.totalNutrients.CHOLE.unit : ''}</p>
+            <p><strong>Sodium:</strong> ${data.totalNutrients.NA ? data.totalNutrients.NA.quantity.toFixed(1) : 'N/A'} ${data.totalNutrients.NA ? data.totalNutrients.NA.unit : ''}</p>
+            <p><strong>Vitamin C:</strong> ${data.totalNutrients.VITC ? data.totalNutrients.VITC.quantity.toFixed(1) : 'N/A'} ${data.totalNutrients.VITC ? data.totalNutrients.VITC.unit : ''}</p>
+            <p><strong>Calcium:</strong> ${data.totalNutrients.CA ? data.totalNutrients.CA.quantity.toFixed(1) : 'N/A'} ${data.totalNutrients.CA ? data.totalNutrients.CA.unit : ''}</p>
+            <p><strong>Iron:</strong> ${data.totalNutrients.FE ? data.totalNutrients.FE.quantity.toFixed(1) : 'N/A'} ${data.totalNutrients.FE ? data.totalNutrients.FE.unit : ''}</p>
+            <p><strong>Potassium:</strong> ${data.totalNutrients.K ? data.totalNutrients.K.quantity.toFixed(1) : 'N/A'} ${data.totalNutrients.K ? data.totalNutrients.K.unit : ''}</p>
+        </div>
+    `;
+
+    resultsDiv.innerHTML = nutritionHtml;
+}
+function showNutritionAnalysisLoading() {
+    if (nutritionAnalysisLoadingSpinner) nutritionAnalysisLoadingSpinner.style.display = 'block';
+    if (nutritionAnalysisResults) nutritionAnalysisResults.innerHTML = ''; // Clear previous results
+    if (nutritionAnalysisMessage) nutritionAnalysisMessage.style.display = 'none'; // Hide message
+}
+
+function hideNutritionAnalysisLoading() {
+    if (nutritionAnalysisLoadingSpinner) nutritionAnalysisLoadingSpinner.style.display = 'none';
+}
+
+function showNutritionAnalysisError(message) {
+    if (nutritionAnalysisResults) {
+        nutritionAnalysisResults.innerHTML = `<p class="message error-message">Error: ${message}</p>`;
+    }
+    if (nutritionAnalysisMessage) nutritionAnalysisMessage.style.display = 'none';
+}
+
+// --- NUTRITION ANALYSIS Handler Function ---
+async function handleNutritionAnalysis() {
+    const inputString = analyzeIngredientsInput.value.trim();
+    const ingredientLines = inputString.split('\n').map(line => line.trim()).filter(line => line !== '');
+console.log("Ingredients array being sent to API:", ingredientLines);
+    if (ingredientLines.length === 0) {
+        showNutritionAnalysisError("Please enter ingredients (one per line) to analyze.");
+        return;
+    }
+
+    showNutritionAnalysisLoading();
+    try {
+        const data = await analyzeRecipeNutrition(ingredientLines);
+        displayNutritionAnalysisResults(data);
+    } catch (error) {
+        if (error.message.includes('401')) {
+             showNutritionAnalysisError(`Authorization failed. Please check your Edamam Nutrition Analysis API ID and Key.`);
+        } else {
+             showNutritionAnalysisError(`Failed to analyze nutrition: ${error.message}. Please check your ingredients or try again.`);
+        }
+    } finally {
+        hideNutritionAnalysisLoading();
+    }
+}
+// --- UI Section Toggling ---
+// --- UI Section Toggling ---
 function showSection(sectionToShow) {
+    // Hide all major sections
     homeSection.classList.add('hidden');
     favoritesSection.classList.add('hidden');
+    nutritionAnalyzerSection.classList.add('hidden'); // ADD THIS LINE
+
+    // Deactivate all navigation buttons
     showHomeBtn.classList.remove('active');
     showFavoritesBtn.classList.remove('active');
+    showNutritionAnalyzerBtn.classList.remove('active'); // ADD THIS LINE
 
+    // Show the selected section
     sectionToShow.classList.remove('hidden');
+
+    // Activate the corresponding button
     if (sectionToShow === homeSection) {
         showHomeBtn.classList.add('active');
     } else if (sectionToShow === favoritesSection) {
         showFavoritesBtn.classList.add('active');
-        displayFavoriteRecipes();
+        displayFavoriteRecipes(); // Ensure favorites are updated when navigating to this section
+    } else if (sectionToShow === nutritionAnalyzerSection) { // ADD THIS BLOCK
+        showNutritionAnalyzerBtn.classList.add('active');
+        // Optionally, clear previous nutrition analysis results or display initial message
+        displayNutritionInitialMessage('Enter ingredients (e.g., "1 apple", "100g chicken breast", "1 cup rice") to analyze their nutritional content.');
     }
 }
-
-showHomeBtn.addEventListener('click', () => showSection(homeSection));
-showFavoritesBtn.addEventListener('click', () => showSection(favoritesSection));
 
 // --- Loading Indicator Functions ---
 function showLoading() {
@@ -251,7 +458,7 @@ function hideLoading() {
     healthFilter.disabled = false;
 }
 
-// Notification Pop-up Functionality 
+// --- Notification Pop-up Functionality ---
 function showNotification(message, type = 'info', duration = 3000) {
     notificationElement.textContent = message;
     notificationElement.className = `notification show ${type}`;
@@ -263,7 +470,7 @@ function showNotification(message, type = 'info', duration = 3000) {
     }, duration);
 }
 
-// Search History/Suggestions 
+// --- Search History/Suggestions ---
 const MAX_SEARCH_HISTORY = 5;
 
 function saveSearchTerm(term) {
@@ -361,7 +568,7 @@ searchInput.addEventListener('keydown', (event) => {
     }
 });
 
-//Favorite Recipes Functionality
+// --- Favorite Recipes Functionality ---
 function loadFavoriteRecipes() {
     try {
         const storedFavorites = localStorage.getItem('favoriteRecipes');
@@ -452,7 +659,7 @@ function openRecipeModal(recipe) {
     modalRecipeImage.src = recipe.image || '';
     modalRecipeImage.alt = recipe.label || 'Recipe image';
 
-    // Ingredients check 
+    // Ingredients check
     if (recipe.ingredientLines && recipe.ingredientLines.length > 0) {
         modalIngredientsList.innerHTML = recipe.ingredientLines.map(ingredient => `<li>${ingredient}</li>`).join('');
     } else {

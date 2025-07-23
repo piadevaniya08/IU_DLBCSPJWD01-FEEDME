@@ -231,6 +231,79 @@ body.dark-mode .search-suggestions .suggestion-item.focused {
     background-color: var(--dark-secondary-color);
     color: var(--dark-text-color); 
 }
+/* --- Dark Mode Specific Styles for Nutrition Analyzer --- */
+body.dark-mode #nutritionAnalyzerSection {
+    background-color: var(--dark-background-color);
+    box-shadow: 0 4px 15px var(--dark-shadow-color-medium);
+    color: var(--dark-text-color);
+}
+
+body.dark-mode #nutritionAnalyzerSection h2 {
+    color: var(--dark-primary-color);
+}
+
+body.dark-mode #analyze-ingredients-input {
+    border-color: var(--dark-border-color);
+    color: var(--dark-text-color);
+    background-color: var(--dark-card-background);
+}
+
+body.dark-mode #analyze-ingredients-input:focus {
+    border-color: var(--dark-primary-color);
+    box-shadow: 0 0 0 3px var(--dark-accent-color);
+}
+
+body.dark-mode #analyze-button {
+    background-color: var(--dark-primary-color);
+}
+
+body.dark-mode #analyze-button:hover {
+    background-color: var(--dark-secondary-color);
+}
+
+body.dark-mode #analyze-button:active {
+    background-color: var(--dark-primary-color);
+}
+
+body.dark-mode #clear-nutrition-button {
+    background-color: var(--dark-accent-color);
+    color: var(--dark-text-color); /* Adjust text color for better contrast if needed */
+}
+
+body.dark-mode #clear-nutrition-button:hover {
+    background-color: var(--dark-secondary-color);
+    color: #ffffff; /* Example: make text white on hover in dark mode */
+}
+body.dark-mode #clear-nutrition-button:active {
+    background-color: var(--dark-accent-color);
+}
+
+body.dark-mode #nutrition-analysis-results {
+    background-color: var(--dark-card-background);
+    box-shadow: 0 2px 10px var(--dark-shadow-color-light);
+    color: var(--dark-text-color);
+}
+
+body.dark-mode #nutrition-analysis-results h3 {
+    color: var(--dark-primary-color);
+}
+
+body.dark-mode #nutrition-analysis-results strong {
+    color: var(--dark-text-color);
+}
+
+body.dark-mode #nutrition-analysis-results .message {
+    color: var(--dark-text-color);
+}
+
+body.dark-mode #nutrition-analysis-results .message.error-message {
+    color: var(--error-color); /* Error color typically remains consistent */
+}
+
+body.dark-mode #nutrition-loading-spinner { 
+    border-color: var(--dark-border-color);
+    border-top-color: var(--dark-primary-color);
+}
 
 
 /*  Utility Classes  */
@@ -343,6 +416,7 @@ body.dark-mode .search-suggestions .suggestion-item.focused {
 /* Search controls */
 .search-section {
     margin-bottom: 45px;
+    text-align: center;
     padding: 25px;
     background-color: var(--card-background);
     border-radius: 12px;
@@ -470,7 +544,166 @@ body.dark-mode .search-suggestions .suggestion-item.focused {
     box-shadow: 0 0 0 3px rgba(156, 39, 176, 0.3);
     background-color: var(--card-background);
 }
+/* --- Nutrition Analyzer Section Styles --- */
 
+#nutritionAnalyzerSection {
+    padding: 20px;
+    background-color: var(--background-color);
+    border-radius: 8px;
+    margin-top: 20px; /* Space from navigation/other sections */
+    box-shadow: 0 4px 12px var(--shadow-color-light);
+    color: var(--text-color);
+    transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+}
+
+#nutritionAnalyzerSection h2 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-weight: var(--font-bold);
+    text-align: center;
+}
+
+/* Input area for ingredients */
+.nutrition-input-area {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+#analyze-ingredients-input {
+    width: 100%;
+    min-height: 150px;
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-family: var(--font-family); /* Assuming you have a font-family variable */
+    font-size: 1rem;
+    color: var(--text-color);
+    background-color: var(--card-background);
+    resize: vertical; /* Allow vertical resizing */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+#analyze-ingredients-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px var(--light-accent-color);
+}
+
+/* Analyze Button */
+#analyze-button,
+#clear-nutrition-button { /* Apply styles to the clear button as well */
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: var(--font-semibold);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    align-self: flex-end; /* Align buttons to the right if in a flex container */
+    margin-left: 10px; /* Space between buttons */
+}
+
+#analyze-button {
+    background-color: var(--primary-color);
+    color: #ffffff; /* White text on primary button */
+}
+
+#analyze-button:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+#analyze-button:active {
+    background-color: var(--dark-primary-color);
+    transform: translateY(0);
+}
+
+#clear-nutrition-button {
+    background-color: var(--accent-color);
+    color: #ffffff;
+}
+
+#clear-nutrition-button:hover {
+    background-color: var(--light-accent-color);
+    color: var(--text-color); /* Text might need to change for contrast */
+    transform: translateY(-2px);
+}
+#clear-nutrition-button:active {
+    background-color: var(--accent-color);
+    transform: translateY(0);
+}
+
+.nutrition-buttons {
+    display: flex;
+    justify-content: flex-end; /* Aligns buttons to the right */
+    gap: 10px; /* Space between buttons */
+}
+
+
+/* Nutrition Analysis Results Area */
+#nutrition-analysis-results {
+    margin-top: 30px;
+    background-color: var(--card-background);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px var(--shadow-color-light);
+    min-height: 100px; /* Ensure it has some height even if empty */
+    display: flex; /* For centering messages */
+    align-items: center; /* For centering messages */
+    justify-content: center; /* For centering messages */
+    text-align: center; /* For centering messages */
+    flex-direction: column; /* Stack messages vertically */
+    transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+}
+
+#nutrition-analysis-results h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-weight: var(--font-semibold);
+}
+
+#nutrition-analysis-results p {
+    margin: 5px 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+#nutrition-analysis-results strong {
+    font-weight: var(--font-semibold);
+    color: var(--text-color);
+}
+
+/* Message styles within results */
+#nutrition-analysis-results .message {
+    color: var(--text-color);
+    font-style: italic;
+    font-size: 1rem;
+    padding: 20px; /* Add some padding for better readability */
+}
+
+#nutrition-analysis-results .message.error-message {
+    color: var(--error-color);
+    font-weight: var(--font-semibold);
+}
+
+/* Basic spinner (optional) */
+.loading-spinner {
+    border: 4px solid #f3f3f3; /* Light grey */
+    border-top: 4px solid var(--primary-color); /* Blue */
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
 /* Loading */
 .loading-indicator {
     text-align: center;
@@ -989,6 +1222,38 @@ body.dark-mode .search-suggestions .suggestion-item.focused {
         font-size: 0.95rem;
         padding: 12px 20px;
         bottom: 20px;
+    }
+}
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #nutritionAnalyzerSection {
+        padding: 15px;
+    }
+
+    #analyze-ingredients-input {
+        min-height: 100px;
+    }
+
+    #analyze-button,
+    #clear-nutrition-button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .nutrition-buttons {
+        flex-direction: column; /* Stack buttons on small screens */
+        align-items: stretch; /* Make them full width */
+        gap: 10px;
+    }
+    #analyze-button,
+    #clear-nutrition-button {
+        margin-left: 0; /* Remove horizontal margin when stacked */
+    }
+}
+
+@media (max-width: 480px) {
+    #nutritionAnalyzerSection h2 {
+        font-size: 1.5rem;
     }
 }
 

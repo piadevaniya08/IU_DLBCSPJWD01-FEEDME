@@ -12,17 +12,19 @@
             <h1>FEEDME ♡ ₊˚⊹𓌉◯𓇋₊˚⊹ ♡</h1>
             <nav class="main-nav">
                 <button id="showHomeBtn" class="nav-button active" aria-controls="homeSection">Home</button>
+                <button id="showNutritionAnalyzerBtn" class="nav-button tab-item" data-tab="nutritionAnalyzerSection" aria-controls="nutritionAnalyzerSection">Nutrition Analyzer</button>
                 <button id="showFavoritesBtn" class="nav-button" aria-controls="favoritesSection">My Favorites</button>
                 <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle dark mode">Dark Mode</button>
             </nav>
         </div>
     </header>
-    <main class="app-main">
-        <section id="homeSection" class="app-section-container">
-            <div class="search-section">
+     
+   <main class="app-main">
+        <section id="homeSection" class="app-section"> <div class="search-section">
                 <h2>Find Your Next Meal</h2>
                 <form id="searchForm">
                     <div class="search-controls">
+                        <!-- Search controls ( 1st dynamic element) -->
                         <label for="searchInput">Search For Recipes</label>
                         <input type="text" id="searchInput" placeholder="Search for ingredients or recipes e.g. 'chickpea curry'">
                         <div id="searchSuggestionsContainer" class="search-suggestions hidden" role="listbox" aria-label="Search suggestions"></div>
@@ -82,21 +84,36 @@
                             <option value="vegan">Vegan</option>
                             <option value="vegetarian">Vegetarian</option>
                             <option value="wheat-free">Wheat-Free</option>
-                        </select>
-                    </div>
+                           </select>
+                           
+                       </div>
                 </form>
             </div>
+                    
             <div id="loadingIndicator" class="loading-indicator hidden" aria-live="polite">Loading Recipes......</div>
             <div id="recipeCardsContainer" class="recipe-cards-container">
                 <p id="initialMessage" class="initial-message">Start by searching for your favorite recipes!</p>
             </div>
         </section>
-        <section id="favoritesSection" class="app-section-container hidden">
-            <h2>My Favorite Recipes</h2>
+        <!-- Nutrition Analyzer (2nd dynamic element) -->
+        <section id="nutritionAnalyzerSection" class="app-section hidden"> <h2>Nutrition Analyzer</h2>
+            <div class="nutrition-input-area">
+                <textarea id="analyze-ingredients-input" placeholder="Enter ingredients, one per line (e.g., 1 apple, 100g chicken breast, 1 cup rice)"></textarea>
+                <div class="nutrition-buttons">
+                    <button id="clear-nutrition-button">Clear</button>
+                    <button id="analyze-button">Analyze Nutrition</button>
+                </div>
+            </div>
+            <div id="nutrition-analysis-results">
+                <p class="message" id="nutrition-analysis-message"></p>
+                <div id="nutrition-loading-spinner" class="loading-spinner hidden"></div>
+            </div>
+        </section>
+
+        <section id="favoritesSection" class="app-section hidden"> <h2>My Favorite Recipes</h2>
             <div id="favoriteRecipesContainer" class="recipe-cards-container">
                 <p id="favoritesEmptyMessage" class="initial-message">You haven't favorited any recipes yet! Go back to search and click the heart icon to save.</p>
             </div>
-        </section>
     </main>
 
     <div id="recipeModal" class="recipe-modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="modalRecipeTitle">
@@ -131,7 +148,7 @@
             </p>
         </div>
     </div>
-
+    
     <div id="notification" class="notification hidden" aria-live="polite"></div>
 
     <footer class="app-footer">
