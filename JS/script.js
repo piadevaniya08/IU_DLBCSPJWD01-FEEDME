@@ -69,17 +69,42 @@ let favoriteRecipes = [];
 function toFixedOrZero(num, fixed = 1) {
     return num ? num.toFixed(fixed) : '0';
 }
-/**
+
+  /**
  * Displays a general message within the nutrition analysis results area.
  * Used for initial instructions or non-error feedback.
  * @param {string} message - The message to display.
  */
+ 
 function displayNutritionInitialMessage(message) {
     if (nutritionAnalysisResults) {
         nutritionAnalysisResults.innerHTML = `<p class="message">${message}</p>`;
     }
     if (nutritionAnalysisMessage) nutritionAnalysisMessage.style.display = 'block'; // Ensure message is visible
 }
+
+
+function clearNutritionAnalysis() {
+    console.log("Clear Nutrition button was clicked and function is running!"); // This line should be INSIDE the function
+
+    // Clear the textarea input
+    if (analyzeIngredientsInput) {
+        analyzeIngredientsInput.value = '';
+    }
+
+    // Clear the results display
+    if (nutritionAnalysisResults) {
+        nutritionAnalysisResults.innerHTML = '';
+        // Also, re-display the initial message after clearing results
+        displayNutritionInitialMessage('Enter ingredients (e.g., "1 apple", "100g chicken breast", "1 cup rice") to analyze their nutritional content.');
+    }
+
+   
+    if (nutritionAnalysisLoadingSpinner) {
+        nutritionAnalysisLoadingSpinner.style.display = 'none';
+    }
+}
+
 //Dark Mode Functionality 
 darkModeToggle.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
@@ -114,6 +139,10 @@ document.addEventListener('DOMContentLoaded', () => {
         analyzeButton.addEventListener('click', handleNutritionAnalysis);
     }
 
+    if (clearNutritionButton) { // Always good to check if the element exists
+        clearNutritionButton.addEventListener('click', clearNutritionAnalysis);
+    }
+    
     if (analyzeIngredientsInput) {
     analyzeIngredientsInput.addEventListener('keypress', (e) => {
 
@@ -121,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     }
 
-  // Around lines 105-109
+  
 if (analyzeIngredientsInput) {
     analyzeIngredientsInput.addEventListener('keypress', (e) => {
         // Removed the 'if (e.key === 'Enter' && !e.shiftKey)' block
@@ -129,9 +158,7 @@ if (analyzeIngredientsInput) {
         // Analysis will only occur when the 'Analyze' button is clicked.
     });
 }
-if (clearNutritionButton) {
-        clearNutritionButton.addEventListener('click', clearNutritionAnalysis);
-    }
+
 //API Interaction 
 async function fetchRecipes() {
     const query = searchInput.value.trim();
@@ -386,7 +413,7 @@ function showNutritionAnalysisError(message) {
     if (nutritionAnalysisMessage) nutritionAnalysisMessage.style.display = 'none';
 }
 
-// --- NUTRITION ANALYSIS Handler Function ---
+//NUTRITION ANALYSIS Handler Function 
 async function handleNutritionAnalysis() {
     const inputString = analyzeIngredientsInput.value.trim();
     const ingredientLines = inputString.split('\n').map(line => line.trim()).filter(line => line !== '');
@@ -410,18 +437,18 @@ console.log("Ingredients array being sent to API:", ingredientLines);
         hideNutritionAnalysisLoading();
     }
 }
-// --- UI Section Toggling ---
+
 // --- UI Section Toggling ---
 function showSection(sectionToShow) {
     // Hide all major sections
     homeSection.classList.add('hidden');
     favoritesSection.classList.add('hidden');
-    nutritionAnalyzerSection.classList.add('hidden'); // ADD THIS LINE
+    nutritionAnalyzerSection.classList.add('hidden'); 
 
     // Deactivate all navigation buttons
     showHomeBtn.classList.remove('active');
     showFavoritesBtn.classList.remove('active');
-    showNutritionAnalyzerBtn.classList.remove('active'); // ADD THIS LINE
+    showNutritionAnalyzerBtn.classList.remove('active'); 
 
     // Show the selected section
     sectionToShow.classList.remove('hidden');
@@ -434,7 +461,7 @@ function showSection(sectionToShow) {
         displayFavoriteRecipes(); // Ensure favorites are updated when navigating to this section
     } else if (sectionToShow === nutritionAnalyzerSection) { // ADD THIS BLOCK
         showNutritionAnalyzerBtn.classList.add('active');
-        // Optionally, clear previous nutrition analysis results or display initial message
+        
         displayNutritionInitialMessage('Enter ingredients (e.g., "1 apple", "100g chicken breast", "1 cup rice") to analyze their nutritional content.');
     }
 }
@@ -570,7 +597,7 @@ searchInput.addEventListener('keydown', (event) => {
     }
 });
 
-// --- Favorite Recipes Functionality ---
+//Favorite Recipes Functionality 
 function loadFavoriteRecipes() {
     try {
         const storedFavorites = localStorage.getItem('favoriteRecipes');
@@ -645,7 +672,7 @@ function displayFavoriteRecipes() {
     });
 }
 
-// --- Recipe Modal Functionality ---
+//Recipe Modal Functionality 
 function openRecipeModal(recipe) {
     console.log("--> ENTERING openRecipeModal function");
     console.log("Recipe object received by modal:", recipe);
