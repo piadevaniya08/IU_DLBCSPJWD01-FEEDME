@@ -101,15 +101,15 @@ body.dark-mode .search-section button:hover {
 }
 
 body.dark-mode .search-section h2 {
-    color: var(--dark-accent-color); 
+    color: var(--dark-secondary-color); 
 }
 
 body.dark-mode .search-section label {
-    color: var(--dark-accent-color); 
+    color: var(--dark-secondary-color); 
 }
 
 body.dark-mode .filter-controls label { 
-    color: var(--dark-accent-color); 
+    color: var(--dark-secondary-color); 
 }
 
 
@@ -239,7 +239,7 @@ body.dark-mode #nutritionAnalyzerSection {
 }
 
 body.dark-mode #nutritionAnalyzerSection h2 {
-    color: var(--dark-primary-color);
+    color: var(--dark-secondary-color);
 }
 
 body.dark-mode #analyze-ingredients-input {
@@ -297,9 +297,8 @@ body.dark-mode #nutrition-analysis-results .message {
 }
 
 body.dark-mode #nutrition-analysis-results .message.error-message {
-    color: var(--error-color); /* Error color typically remains consistent */
+    color: var(--error-color); 
 }
-
 body.dark-mode #nutrition-loading-spinner { 
     border-color: var(--dark-border-color);
     border-top-color: var(--dark-primary-color);

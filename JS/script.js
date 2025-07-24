@@ -114,22 +114,24 @@ document.addEventListener('DOMContentLoaded', () => {
         analyzeButton.addEventListener('click', handleNutritionAnalysis);
     }
 
-    if (clearNutritionButton) { // Add listener for the clear button if you include it in HTML
-        clearNutritionButton.addEventListener('click', () => {
-            analyzeIngredientsInput.value = '';
-            displayNutritionInitialMessage('Enter ingredients (e.g., "1 apple", "100g chicken breast", "1 cup rice") to analyze their nutritional content.');
-        });
+    if (analyzeIngredientsInput) {
+    analyzeIngredientsInput.addEventListener('keypress', (e) => {
+
+    });
+    
     }
 
-    if (analyzeIngredientsInput) { 
-        analyzeIngredientsInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter' && !e.shiftKey) { // Prevents new line on Enter, allows Shift+Enter for new line
-                e.preventDefault(); 
-                handleNutritionAnalysis();
-            }
-        });
+  // Around lines 105-109
+if (analyzeIngredientsInput) {
+    analyzeIngredientsInput.addEventListener('keypress', (e) => {
+        // Removed the 'if (e.key === 'Enter' && !e.shiftKey)' block
+        // No code here means the default behavior for 'Enter' (a newline) will happen.
+        // Analysis will only occur when the 'Analyze' button is clicked.
+    });
+}
+if (clearNutritionButton) {
+        clearNutritionButton.addEventListener('click', clearNutritionAnalysis);
     }
-
 //API Interaction 
 async function fetchRecipes() {
     const query = searchInput.value.trim();

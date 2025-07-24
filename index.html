@@ -11,7 +11,7 @@
         <div class="container">
             <h1>FEEDME ♡ ₊˚⊹𓌉◯𓇋₊˚⊹ ♡</h1>
             <nav class="main-nav">
-                <button id="showHomeBtn" class="nav-button active" aria-controls="homeSection">Home</button>
+                <button id="showHomeBtn" class="nav-button active" aria-controls="homeSection">Recipe Search</button>
                 <button id="showNutritionAnalyzerBtn" class="nav-button tab-item" data-tab="nutritionAnalyzerSection" aria-controls="nutritionAnalyzerSection">Nutrition Analyzer</button>
                 <button id="showFavoritesBtn" class="nav-button" aria-controls="favoritesSection">My Favorites</button>
                 <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle dark mode">Dark Mode</button>
@@ -98,7 +98,10 @@
         <!-- Nutrition Analyzer (2nd dynamic element) -->
         <section id="nutritionAnalyzerSection" class="app-section hidden"> <h2>Nutrition Analyzer</h2>
             <div class="nutrition-input-area">
-                <textarea id="analyze-ingredients-input" placeholder="Enter ingredients here"></textarea>
+                <textarea id="analyze-ingredients-input" placeholder="Enter food items you want to analyze here. Enter one food item/ingredient per line.
+                e.g. 100g chicken breast,
+                2 tomatoes,
+                100g parmesean cheese"></textarea>
                 <div class="nutrition-buttons">
                     <button id="clear-nutrition-button">Clear</button>
                     <button id="analyze-button">Analyze Nutrition</button>
