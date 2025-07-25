@@ -23,16 +23,16 @@
 To host locally:
 
 1. Clone the repository:
+   
 
-git clone https://github.com/piadevaniya08/IU_DLBCSPJWD01-FEEDME.git
+```git clone https://github.com/piadevaniya08/IU_DLBCSPJWD01-FEEDME.git```
 
 
 
 2. Navigate into the Project Directory:
+   
 
-cd IU_DLBCSPJWD01-FEEDME
-
-
+```cd IU_DLBCSPJWD01-FEEDME```
 
 
 3. API Key Configuration:
