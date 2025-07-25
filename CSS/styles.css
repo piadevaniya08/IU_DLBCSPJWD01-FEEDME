@@ -33,12 +33,11 @@
     --font-bold: 700;
 }
 
-/* Base styles for the body, applied regardless of dark mode */
+/* Base styles for the body*/
 body {
     font-family: sans-serif;
     margin: 0;
     padding: 0;
-    /* Default light mode colors */
     background-color: var(--background-color); 
     color: var(--text-color); 
     transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
@@ -239,7 +238,7 @@ body.dark-mode #nutritionAnalyzerSection {
 }
 
 body.dark-mode #nutritionAnalyzerSection h2 {
-    color: var(--dark-secondary-color);
+    color: var(white);
 }
 
 body.dark-mode #analyze-ingredients-input {
@@ -267,12 +266,12 @@ body.dark-mode #analyze-button:active {
 
 body.dark-mode #clear-nutrition-button {
     background-color: var(--dark-accent-color);
-    color: var(--dark-text-color); /* Adjust text color for better contrast if needed */
+    color: var(--dark-text-color); 
 }
 
 body.dark-mode #clear-nutrition-button:hover {
     background-color: var(--dark-secondary-color);
-    color: #ffffff; /* Example: make text white on hover in dark mode */
+    color: #ffffff; 
 }
 body.dark-mode #clear-nutrition-button:active {
     background-color: var(--dark-accent-color);
@@ -285,7 +284,7 @@ body.dark-mode #nutrition-analysis-results {
 }
 
 body.dark-mode #nutrition-analysis-results h3 {
-    color: var(--dark-primary-color);
+    color: var(white);
 }
 
 body.dark-mode #nutrition-analysis-results strong {
@@ -543,13 +542,12 @@ body.dark-mode #nutrition-loading-spinner {
     box-shadow: 0 0 0 3px rgba(156, 39, 176, 0.3);
     background-color: var(--card-background);
 }
-/* --- Nutrition Analyzer Section Styles --- */
-
+/*Nutrition Analyzer Section Styles */
 #nutritionAnalyzerSection {
     padding: 20px;
     background-color: var(--background-color);
     border-radius: 8px;
-    margin-top: 20px; /* Space from navigation/other sections */
+    margin-top: 20px; 
     box-shadow: 0 4px 12px var(--shadow-color-light);
     color: var(--text-color);
     transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
@@ -562,7 +560,7 @@ body.dark-mode #nutrition-loading-spinner {
     text-align: center;
 }
 
-/* Input area for ingredients */
+
 .nutrition-input-area {
     display: flex;
     flex-direction: column;
@@ -576,12 +574,12 @@ body.dark-mode #nutrition-loading-spinner {
     padding: 15px;
     border: 1px solid var(--border-color);
     border-radius: 5px;
-    font-family: var(--font-family); /* Assuming you have a font-family variable */
+    font-family: var(--font-family); 
     font-size: 1rem;
     color: var(--text-color);
     background-color: var(--card-background);
-    resize: vertical; /* Allow vertical resizing */
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    resize: vertical; 
+    box-sizing: border-box; 
     transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
@@ -593,7 +591,7 @@ body.dark-mode #nutrition-loading-spinner {
 
 /* Analyze Button */
 #analyze-button,
-#clear-nutrition-button { /* Apply styles to the clear button as well */
+#clear-nutrition-button { 
     padding: 12px 25px;
     border: none;
     border-radius: 5px;
@@ -601,13 +599,13 @@ body.dark-mode #nutrition-loading-spinner {
     font-size: 1rem;
     font-weight: var(--font-semibold);
     transition: background-color 0.3s ease, transform 0.2s ease;
-    align-self: flex-end; /* Align buttons to the right if in a flex container */
-    margin-left: 10px; /* Space between buttons */
+    align-self: flex-end; 
+    margin-left: 10px; 
 }
 
 #analyze-button {
     background-color: var(--primary-color);
-    color: #ffffff; /* White text on primary button */
+    color: #ffffff;
 }
 
 #analyze-button:hover {
@@ -627,7 +625,7 @@ body.dark-mode #nutrition-loading-spinner {
 
 #clear-nutrition-button:hover {
     background-color: var(--light-accent-color);
-    color: var(--text-color); /* Text might need to change for contrast */
+    color: var(--text-color); 
     transform: translateY(-2px);
 }
 #clear-nutrition-button:active {
@@ -637,8 +635,8 @@ body.dark-mode #nutrition-loading-spinner {
 
 .nutrition-buttons {
     display: flex;
-    justify-content: flex-end; /* Aligns buttons to the right */
-    gap: 10px; /* Space between buttons */
+    justify-content: flex-end; 
+    gap: 10px; 
 }
 
 
@@ -649,12 +647,12 @@ body.dark-mode #nutrition-loading-spinner {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 8px var(--shadow-color-light);
-    min-height: 100px; /* Ensure it has some height even if empty */
-    display: flex; /* For centering messages */
-    align-items: center; /* For centering messages */
-    justify-content: center; /* For centering messages */
-    text-align: center; /* For centering messages */
-    flex-direction: column; /* Stack messages vertically */
+    min-height: 100px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    text-align: center; 
+    flex-direction: column; 
     transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
 }
 
@@ -680,7 +678,7 @@ body.dark-mode #nutrition-loading-spinner {
     color: var(--text-color);
     font-style: italic;
     font-size: 1rem;
-    padding: 20px; /* Add some padding for better readability */
+    padding: 20px; 
 }
 
 #nutrition-analysis-results .message.error-message {
@@ -688,10 +686,10 @@ body.dark-mode #nutrition-loading-spinner {
     font-weight: var(--font-semibold);
 }
 
-/* Basic spinner (optional) */
+/* Basic spinner */
 .loading-spinner {
-    border: 4px solid #f3f3f3; /* Light grey */
-    border-top: 4px solid var(--primary-color); /* Blue */
+    border: 4px solid #f3f3f3; 
+    border-top: 4px solid var(--primary-color); 
     border-radius: 50%;
     width: 30px;
     height: 30px;
@@ -1246,7 +1244,7 @@ body.dark-mode #nutrition-loading-spinner {
     }
     #analyze-button,
     #clear-nutrition-button {
-        margin-left: 0; /* Remove horizontal margin when stacked */
+        margin-left: 0; 
     }
 }
 
