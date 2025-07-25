@@ -22,14 +22,19 @@
 ## ⬇️Installation
 To host locally:
 1. Clone the Repository
+   
 git clone https://github.com/piadevaniya8/IU_DLBCSPJWD01-FEEDME.git
 
-2. Navigate into the Project Directory
+3. Navigate into the Project Directory
+
  cd IU_DLBCSPJWD01-FEEDME
 
-3. Simply open the index.html file in any modern web browser:
+5. Simply open the index.html file in any modern web browser:
+   
   Double-click index.html
+  
 ✅ Requirements
+
 •	A modern web browser (Chrome, Firefox, Edge, etc.)
 
 •	No installation or backend setup required — everything runs in the browser
