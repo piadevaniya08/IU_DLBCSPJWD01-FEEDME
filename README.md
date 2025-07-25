@@ -24,12 +24,12 @@ To host locally:
 
 1. Clone the repository:
 
-```bash git clone https://github.com/piadevaniya08/IU_DLBCSPJWD01-FEEDME.git
+```bash git clone https://github.com/piadevaniya08/IU_DLBCSPJWD01-FEEDME.git```
 
 
 2. Navigate into the Project Directory:
 
-```bash cd IU_DLBCSPJWD01-FEEDME
+```bash cd IU_DLBCSPJWD01-FEEDME```
 
 
 
