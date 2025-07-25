@@ -31,7 +31,7 @@ To host locally:
 2. Navigate into the Project Directory:
    
 ```bash
- cd IU_DLBCSPJWD01-FEEDME
+  cd IU_DLBCSPJWD01-FEEDME
 
 
 
