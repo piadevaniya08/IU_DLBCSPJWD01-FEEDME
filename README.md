@@ -21,22 +21,27 @@
 
 ## ⬇️Installation
 To host locally:
-1. Clone the Repository:
 
+1. Clone the repository:
+
+   ```bash
    git clone https://github.com/piadevaniya08/IU_DLBCSPJWD01-FEEDME.git
 
 
-3. Navigate into the Project Directory:
-
+2. Navigate into the Project Directory:
+   
+```bash
  cd IU_DLBCSPJWD01-FEEDME
 
-3. Open index.html in your browser:
+3.API Key Configuration:
+   ***NOTE: The `JS/script.js` file in this repository already includes pre-configured Edamam API keys for immediate local use. Therefore, you do not need to obtain your own keys to run the application.
+
+4. Open index.html in your browser:
    
-   start index.html
-   
-Or double-click index.html directly in your file explorer.
+Double-click the index.html file
+Or right-click and choose "Open with" → your preferred browser
   
-4. The FEEDME web app should now be running locally in your browser.
+4. The FEEDME web app should now be running locally in your browser!
 
 
 ✅ Requirements
