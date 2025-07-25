@@ -21,18 +21,24 @@
 
 ## ⬇️Installation
 To host locally:
-1. Clone the Repository
-   
-git clone https://github.com/piadevaniya8/IU_DLBCSPJWD01-FEEDME.git
+1. Clone the Repository:
 
-3. Navigate into the Project Directory
+   git clone https://github.com/piadevaniya08/IU_DLBCSPJWD01-FEEDME.git
+
+
+3. Navigate into the Project Directory:
 
  cd IU_DLBCSPJWD01-FEEDME
 
-5. Simply open the index.html file in any modern web browser:
+3. Open index.html in your browser:
    
-  Double-click index.html
+   start index.html
+   
+Or double-click index.html directly in your file explorer.
   
+4. The FEEDME web app should now be running locally in your browser.
+
+
 ✅ Requirements
 
 •	A modern web browser (Chrome, Firefox, Edge, etc.)
